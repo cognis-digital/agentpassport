@@ -1,1 +1,4 @@
-from agentpassport.cli import main\nimport sys\nsys.exit(main())\n
+import sys
+from agentpassport.cli import main
+
+sys.exit(main())
