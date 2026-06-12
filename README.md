@@ -19,7 +19,7 @@ to a human*, and 45% still authenticate agents with shared API keys. OAuth/MCP h
 delegation chains you can verify back to a human principal.
 
 ```bash
-pip install cognis-agentpassport
+pip install "git+https://github.com/cognis-digital/agentpassport.git"
 agentpassport issue researcher --principal chris --scopes read,search,write --key K > p.json
 agentpassport delegate p.json summarizer --scopes read,search --key K2 > p2.json   # subset only
 agentpassport verify p2.json --keys '{"human:chris":"K","agent:researcher":"K2"}' --require write
