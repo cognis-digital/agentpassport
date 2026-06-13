@@ -82,5 +82,11 @@ Aligned with **IETF draft-klrc-aiagent-auth** (AIMS), **NIST** agent-identity co
 
 > ### ⭐ Star it — agent identity is the problem nobody's solved yet.
 
+## Interoperability
+
+`{}` composes with the 300+ tool Cognis suite — JSON in/out and a shared
+OpenAI-compatible `/v1` backbone. See **[INTEROP.md](INTEROP.md)** for the
+suite map, composition patterns, and reference stacks.
+
 ## License
 COCL v1.0 — see [LICENSE](LICENSE).
