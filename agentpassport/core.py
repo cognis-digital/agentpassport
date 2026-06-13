@@ -8,7 +8,7 @@ Stdlib only (hmac/hashlib). Demonstrative — pair with real PKI/SPIFFE in produ
 """
 from __future__ import annotations
 import base64, hashlib, hmac, json, time
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, asdict
 
 TOOL_NAME = "agentpassport"; TOOL_VERSION = "0.1.0"
 
