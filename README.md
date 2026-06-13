@@ -26,6 +26,32 @@ agentpassport verify p2.json --keys '{"human:chris":"K","agent:researcher":"K2"}
 # → valid:false, violation: required scope 'write' not held at final hop  ✅ escalation blocked
 ```
 
+## Usage — step by step
+
+1. **Install** the tool:
+   ```bash
+   pip install cognis-agentpassport
+   ```
+2. **Issue a passport** for an agent, anchoring it to a human principal with an explicit scope set. `--key` signs it:
+   ```bash
+   agentpassport issue researcher --principal chris --scopes read,search,write --key K > p.json
+   ```
+3. **Delegate** to a child agent — scopes can only narrow (subset), never escalate:
+   ```bash
+   agentpassport delegate p.json summarizer --scopes read,search --key K2 > p2.json
+   ```
+4. **Verify** the chain back to the human. `--keys` is a JSON map of issuer-to-key; `--require` asserts a scope must be held at the final hop:
+   ```bash
+   agentpassport verify p2.json --keys '{"human:chris":"K","agent:researcher":"K2"}' --require write
+   # -> valid:false, violation: required scope 'write' not held at final hop  (escalation blocked)
+   echo $?   # non-zero when verification fails
+   ```
+5. **Automate in CI / a gateway** — verify the presented passport before honoring an agent action:
+   ```yaml
+   - run: pip install cognis-agentpassport
+   - run: agentpassport verify "$AGENT_PASSPORT" --keys "$TRUSTED_KEYS" --require write
+   ```
+
 ## Architecture
 
 ```mermaid
