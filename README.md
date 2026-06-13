@@ -26,6 +26,12 @@ agentpassport verify p2.json --keys '{"human:chris":"K","agent:researcher":"K2"}
 # → valid:false, violation: required scope 'write' not held at final hop  ✅ escalation blocked
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+When an AI agent hands off a task to another AI agent, it is easy to lose track of who originally gave permission for what. `agentpassport` solves this by creating a digital "chain of custody" — a short, signed document that travels with the task and records every handoff, all the way back to the human who started it. Each step can only grant the same permissions or fewer, so no agent can quietly gain more access than it was given. You can verify the whole chain at any point and instantly know if something is wrong.
+<!-- cognis:layman:end -->
+
 ## Architecture
 
 ```mermaid
@@ -52,6 +58,42 @@ Aligned with **IETF draft-klrc-aiagent-auth** (AIMS), **NIST** agent-identity co
 **Mastercard Agent Pay** tokenization. Production: anchor the HMAC demo in real PKI / SPIFFE.
 
 <a name="verification"></a>
+<!-- cognis:install:start -->
+## Install
+
+`agentpassport` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/agentpassport/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/agentpassport/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/agentpassport.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/agentpassport.git"  # uv
+pip install "git+https://github.com/cognis-digital/agentpassport.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/agentpassport.git
+cd agentpassport && pip install .
+```
+
+Then run:
+```sh
+agentpassport --help
+```
+<!-- cognis:install:end -->
+
 ## Verification
 
 [![tests](https://img.shields.io/badge/tests-1%20passing-2ea44f.svg)](AUDIT.md)
@@ -61,18 +103,27 @@ Every push is verified end-to-end. Latest audit (2026-06-13):
 ```text
 tests        : 1 passed, 0 failed, 0 errored
 compile      : all modules parse
-cli          : C:\Python314\python.exe: No module named https
-package      : https
+cli          : agentpassport 0.1.0
+package      : agentpassport
 ```
 
 <details><summary>CLI surface (<code>--help</code>)</summary>
 
 ```text
-C:\Python314\python.exe: No module named https
+usage: agentpassport [-h] [--version] {issue,delegate,verify} ...
+
+Verifiable agent identity + multi-hop delegation.
+
+positional arguments:
+  {issue,delegate,verify}
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
 ```
 </details>
 
-Full machine-readable results: [`AUDIT.md`](AUDIT.md) · regenerate with `python -m https --help` + `pytest -q`.
+Full machine-readable results: [`AUDIT.md`](AUDIT.md) · regenerate with `python -m agentpassport --help` + `pytest -q`.
 
 <div align="right"><a href="#top">↑ back to top</a></div>
 
