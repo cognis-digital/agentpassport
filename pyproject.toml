@@ -21,3 +21,6 @@ Repository = "https://github.com/cognis-digital/agentpassport"
 agentpassport = "agentpassport.cli:main"
 [tool.hatch.build.targets.wheel]
 packages = ["agentpassport"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
