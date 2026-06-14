@@ -3,19 +3,21 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 [project]
 name = "cognis-agentpassport"
-version = "0.1.0"
+version = "0.1.1"
 description = "Verifiable AI-agent identity + multi-hop delegation chains anchored to a human principal"
 license = {text = "LicenseRef-COCL-1.0"}
 requires-python = ">=3.10"
 readme = "README.md"
 classifiers = ["Development Status :: 4 - Beta", "License :: Other/Proprietary License"]
 [project.optional-dependencies]
+connect = ["cognis-connect @ git+https://github.com/cognis-digital/cognis-connect.git"]
 mcp = ["mcp>=1.0"]
 dev = ["pytest>=8.0"]
 [project.urls]
 Homepage = "https://cognis.digital"
 Repository = "https://github.com/cognis-digital/agentpassport"
 [project.scripts]
+"agentpassport-emit" = "agentpassport.connect:emit_main"
 agentpassport = "agentpassport.cli:main"
 [tool.hatch.build.targets.wheel]
 packages = ["agentpassport"]
