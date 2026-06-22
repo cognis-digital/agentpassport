@@ -1,0 +1,27 @@
+{
+  "principal": "human:grace",
+  "chain": [
+    {
+      "agent": "intake",
+      "issuer": "human:grace",
+      "scopes": [
+        "read",
+        "search"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "cDvfevW1Y3KF188m4ifkdwacsHu40M6J7TexavlX5x8"
+    },
+    {
+      "agent": "triage",
+      "issuer": "agent:intake",
+      "scopes": [
+        "read",
+        "search"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "R8ewGo4Lt-kfP_PBcd7PXeFnLtRhWD3TWZ1t3e-MSWk"
+    }
+  ]
+}

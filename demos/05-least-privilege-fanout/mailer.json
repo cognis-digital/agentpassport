@@ -1,0 +1,29 @@
+{
+  "principal": "human:dana",
+  "chain": [
+    {
+      "agent": "planner",
+      "issuer": "human:dana",
+      "scopes": [
+        "calendar.write",
+        "email.send",
+        "read",
+        "search",
+        "write"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "152xysSKHwsAp_U0v__2k3I3uhOO50ekoTDy-SilbSA"
+    },
+    {
+      "agent": "mailer",
+      "issuer": "agent:planner",
+      "scopes": [
+        "email.send"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "uPCTt6R5Opyo3mdC7-9SBIomTsk5je9hna2ZQlyi-RM"
+    }
+  ]
+}

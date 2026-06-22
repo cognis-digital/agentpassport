@@ -1,0 +1,28 @@
+{
+  "principal": "human:erin",
+  "chain": [
+    {
+      "agent": "crew-lead",
+      "issuer": "human:erin",
+      "scopes": [
+        "code.write",
+        "read",
+        "search"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "jsC6ct8D5oG63Me2XGphPon_Bw3qAiWYpMWQzAJquig"
+    },
+    {
+      "agent": "coder",
+      "issuer": "agent:crew-lead",
+      "scopes": [
+        "code.write",
+        "read"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "0f_SMILY1-cV1qv6KwH0OPeexA92ni3hAx-LPlsgCRg"
+    }
+  ]
+}

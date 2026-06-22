@@ -1,0 +1,16 @@
+{
+  "principal": "human:carol",
+  "chain": [
+    {
+      "agent": "ops-agent",
+      "issuer": "human:carol",
+      "scopes": [
+        "metrics.read",
+        "read"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "Jpe67XvKwpoQoZYIJLKNVOQn-ZYke7cnMJvs962tMuM"
+    }
+  ]
+}

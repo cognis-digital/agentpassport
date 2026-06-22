@@ -1,0 +1,16 @@
+{
+  "principal": "human:release-bot",
+  "chain": [
+    {
+      "agent": "deploy-agent",
+      "issuer": "human:release-bot",
+      "scopes": [
+        "deploy:staging",
+        "read"
+      ],
+      "iat": 1782129600.0,
+      "exp": 1782130500.0,
+      "sig": "jXWGS4tXhd8rIH-mI58Hm5sh6sAxBZBD42fblSM2Bgc"
+    }
+  ]
+}

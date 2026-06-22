@@ -1,0 +1,51 @@
+{
+  "principal": "human:alice",
+  "chain": [
+    {
+      "agent": "rag-orchestrator",
+      "issuer": "human:alice",
+      "scopes": [
+        "embed",
+        "read",
+        "search",
+        "write"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "_mjHtVnbD0I682VjZ-PdqUAxcQqo25spg_bLiLutlCY"
+    },
+    {
+      "agent": "retriever",
+      "issuer": "agent:rag-orchestrator",
+      "scopes": [
+        "embed",
+        "read",
+        "search"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "wGMjLJTauvy2kYN6FxsE7u2TIRpQKF0Z2BHpbvJimtM"
+    },
+    {
+      "agent": "summarizer",
+      "issuer": "agent:retriever",
+      "scopes": [
+        "embed",
+        "read"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "-z7UR6VsRd4n5pjzOv_cU4WL8_OWUlkgXcVehQFO-co"
+    },
+    {
+      "agent": "indexer",
+      "issuer": "agent:summarizer",
+      "scopes": [
+        "embed"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "wPqZb08RNFBalwOU3Zgu3JYKrSAzwvb955EBWMt6zqA"
+    }
+  ]
+}

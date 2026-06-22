@@ -1,0 +1,29 @@
+{
+  "principal": "human:frank",
+  "chain": [
+    {
+      "agent": "mcp-host",
+      "issuer": "human:frank",
+      "scopes": [
+        "fs.read",
+        "fs.write",
+        "read",
+        "shell.exec"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "xAHj3mG9OPeRikG2DSkm2fQrCKUK8WUHBmz0elLxrGM"
+    },
+    {
+      "agent": "file-tool",
+      "issuer": "agent:mcp-host",
+      "scopes": [
+        "fs.read",
+        "fs.write"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "hiBM40oWIqaFpV5kXnGwXkRckpKsp6Tmv4PQq7GHfGU"
+    }
+  ]
+}

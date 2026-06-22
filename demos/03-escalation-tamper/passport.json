@@ -1,0 +1,27 @@
+{
+  "principal": "human:bob",
+  "chain": [
+    {
+      "agent": "support-bot",
+      "issuer": "human:bob",
+      "scopes": [
+        "read",
+        "ticket.read"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "Vc_Uj_FtZJmsMrIp7L4eXl_8DFsdH-46scdqITDqIbo"
+    },
+    {
+      "agent": "auto-responder",
+      "issuer": "agent:support-bot",
+      "scopes": [
+        "read",
+        "ticket.write"
+      ],
+      "iat": 1782129600.0,
+      "exp": null,
+      "sig": "YLq2JzJLVqGaMMchM_-sVLzOdNICZtdAvnb91TAU9ZQ"
+    }
+  ]
+}

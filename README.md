@@ -52,6 +52,39 @@ agentpassport verify p2.json --keys '{"human:chris":"K","agent:researcher":"K2"}
    - run: agentpassport verify "$AGENT_PASSPORT" --keys "$TRUSTED_KEYS" --require write
    ```
 
+## Short-lived delegation (TTL / expiry)
+
+Standing agent credentials are a blast-radius problem. Add `--ttl <seconds>` at `issue` or
+`delegate` time and the hop carries a signed `exp`; `verify` rejects the chain once it lapses.
+A child's expiry is **clamped to never outlive its parent**. Passports issued without a TTL
+never expire (fully backward-compatible with 0.1.x credentials).
+
+```bash
+agentpassport issue deploy-agent --principal release-bot --scopes deploy:staging --key K --ttl 900 > p.json
+agentpassport verify p.json --keys '{"human:release-bot":"K"}'                 # valid now
+agentpassport verify p.json --keys '{"human:release-bot":"K"}' --at 9999999999 # valid:false — expired
+```
+
+`--at <unix>` pins the clock for deterministic checks (CI, tests); omit it in production to use
+the wall clock. The verify output now also reports `expires_at` (earliest expiry in the chain).
+
+## Demos — real, runnable scenarios
+
+Every passport under [`demos/`](demos/) is a genuine HMAC-signed artifact produced by the
+library (regenerate with `python scripts/build_demos.py`). Each folder has a `SCENARIO.md` with
+where the data came from, the exact command, and how to act on the result.
+
+| Demo | Scenario |
+|------|----------|
+| [`02-rag-4-hop-chain`](demos/02-rag-4-hop-chain/) | 4-hop RAG pipeline anchored to a human; final hop can't `write` |
+| [`03-escalation-tamper`](demos/03-escalation-tamper/) | Hand-edited scopes — caught by both bad-signature and escalation checks |
+| [`04-ci-ttl-deploy`](demos/04-ci-ttl-deploy/) | 15-minute CI deploy token; valid in-window, expired after |
+| [`05-least-privilege-fanout`](demos/05-least-privilege-fanout/) | One human, three sibling agents each holding only their slice |
+| [`06-rotated-key-mismatch`](demos/06-rotated-key-mismatch/) | Wrong/rotated signing key → bad signature |
+| [`07-missing-issuer-key`](demos/07-missing-issuer-key/) | Incomplete trust map fails closed |
+| [`08-mcp-tool-gating`](demos/08-mcp-tool-gating/) | Gate MCP tool calls; `shell.exec` blocked, `fs.write` allowed |
+| [`09-auto-narrow-subset`](demos/09-auto-narrow-subset/) | Over-broad delegate request auto-narrowed to a subset |
+
 ## Architecture
 
 ```mermaid

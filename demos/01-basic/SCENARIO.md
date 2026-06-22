@@ -1,1 +1,0 @@
-# Demo\n\nIssue → delegate (subset) → verify; escalation is blocked.\n
