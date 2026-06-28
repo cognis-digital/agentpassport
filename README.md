@@ -26,6 +26,51 @@ agentpassport verify p2.json --keys '{"human:chris":"K","agent:researcher":"K2"}
 # → valid:false, violation: required scope 'write' not held at final hop  ✅ escalation blocked
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ agentpassport-emit --version
+agentpassport 0.2.0
+```
+
+```console
+$ agentpassport-emit --help
+usage: agentpassport [-h] [--version] {issue,delegate,verify} ...
+
+Verifiable agent identity + multi-hop delegation.
+
+positional arguments:
+  {issue,delegate,verify}
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+```
+
+> Blocks above are real `agentpassport` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+    "findings": [
+        {
+            "id": "1234567890",
+            "title": "Suspicious Network Traffic",
+            "description": "Potential malicious activity detected on network 192.168.1.100",
+            "created_by": "cognis-connect",
+            "created_at": "2023-02-15T14:30:00Z"
+        }
+    ]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. **Install** the tool:

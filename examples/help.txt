@@ -1,0 +1,12 @@
+$ agentpassport-emit --help
+
+usage: agentpassport [-h] [--version] {issue,delegate,verify} ...
+
+Verifiable agent identity + multi-hop delegation.
+
+positional arguments:
+  {issue,delegate,verify}
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
